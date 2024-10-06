@@ -2,7 +2,9 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Bolt, Wrench, Search, ArrowRight } from "lucide-react"
-
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom'
 export default function LandingPage() {
   return (
     <div className="flex flex-col min-h-screen">
@@ -18,8 +20,8 @@ export default function LandingPage() {
           <a className="text-sm font-medium hover:underline underline-offset-4" href="#">
             For Professionals
           </a>
-          <a className="text-sm font-medium hover:underline underline-offset-4" href="#">
-            Sign In
+          <a className="text-sm font-medium hover:underline underline-offset-4" href="/signup-page">
+            Sign Up
           </a>
         </nav>
       </header>
@@ -28,7 +30,7 @@ export default function LandingPage() {
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center space-y-4 text-center">
               <div className="space-y-2">
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
+                <h1 className="text-3xl font-bold text-yellow-500 tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
                   Connect with Trusted Electricians and Plumbers
                 </h1>
                 <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl">
@@ -37,7 +39,7 @@ export default function LandingPage() {
               </div>
               <div className="w-full max-w-sm space-y-2">
                 <form className="flex space-x-2">
-                  <Input className="max-w-lg flex-1" placeholder="Enter your zip code" type="text" />
+                  <Input className="max-w-lg flex-1 bg-transparent text-black" placeholder="Enter your zip code" type="number" />
                   <Button type="submit">
                     Find Pros
                     <ArrowRight className="ml-2 h-4 w-4" />
@@ -49,32 +51,32 @@ export default function LandingPage() {
         </section>
         <section className="w-full py-12 md:py-24 lg:py-32 bg-white">
           <div className="container px-4 md:px-6">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-8">
+            <h2 className="text-3xl font-bold text-yellow-500 tracking-tighter sm:text-4xl md:text-5xl text-center mb-8">
               Join Our Network of Professionals
             </h2>
             <Tabs defaultValue="electricians" className="w-full max-w-2xl mx-auto">
-              <TabsList className="grid w-full grid-cols-2">
+              <TabsList className="grid w-full grid-cols-2 text-gray-500">
                 <TabsTrigger value="electricians">Electricians</TabsTrigger>
                 <TabsTrigger value="plumbers">Plumbers</TabsTrigger>
               </TabsList>
               <TabsContent value="electricians" className="mt-6">
                 <div className="flex flex-col items-center space-y-4">
                   <Bolt className="h-12 w-12 text-yellow-500" />
-                  <h3 className="text-2xl font-bold">Electricians</h3>
+                  <h3 className="text-2xl font-bold text-gray-500">Electricians</h3>
                   <p className="text-gray-500 text-center max-w-md">
                     Connect with customers in need of electrical services. Grow your business and manage your schedule efficiently.
                   </p>
-                  <Button>Sign Up as an Electrician</Button>
+                  <Button className="text-gray-400">Sign Up as an Electrician</Button>
                 </div>
               </TabsContent>
               <TabsContent value="plumbers" className="mt-6">
                 <div className="flex flex-col items-center space-y-4">
                   <Wrench className="h-12 w-12 text-blue-500" />
-                  <h3 className="text-2xl font-bold">Plumbers</h3>
+                  <h3 className="text-2xl font-bold text-gray-500">Plumbers</h3>
                   <p className="text-gray-500 text-center max-w-md">
                     Find new plumbing jobs in your area. Showcase your skills and build your reputation with verified reviews.
                   </p>
-                  <Button>Sign Up as a Plumber</Button>
+                  <Button className="text-gray-400">Sign Up as a Plumber</Button>
                 </div>
               </TabsContent>
             </Tabs>
@@ -84,7 +86,7 @@ export default function LandingPage() {
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center space-y-4 text-center">
               <Search className="h-12 w-12 text-blue-600" />
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Find Services</h2>
+              <h2 className="text-3xl font-bold tracking-tighter text-gray-400 sm:text-4xl md:text-5xl">Find Services</h2>
               <p className="max-w-[600px] text-gray-500 md:text-xl">
                 Looking for a reliable electrician or plumber? Enter your location to get started.
               </p>
